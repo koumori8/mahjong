@@ -6,25 +6,23 @@
 <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-    <div class="input">
-        <div class="box1">
-            <p><input id="names" type="text" placeholder="名前を入力" size="50"></p>
-            <p><input id="games" type="number" placeholder="ゲームの回数"></p>
+    <div class="form">
+        <div class="upper">
+            <input id="names" type="text" placeholder="名前を入力" size="50">
         </div>
-        <div class="box2">
-            <p><textarea id="scores" name="scores" cols="30" rows="10" placeholder="40000 30000 20000 10000"></textarea></p>
+        <div class="lower">
+            <textarea id="scores" name="scores" cols="30" rows="10" placeholder="40000 30000 20000 10000"></textarea>
             <button py-click="clicked()" id="button">実行</button>
         </div>
+        
     </div>
     
-
 <py-script>
     def clicked():
         names = Element("names").element.value
         name = names.split()
-        N = Element("games").element.value
-        N = int(N)
         scores = Element("scores").element.value
+        N = scores.count('\n') + 1
         scores = scores.split()
         scores = [int(n) for n in scores]
         ans = [0,0,0,0]
@@ -36,16 +34,12 @@
                 print(name[i],end=", ")
             else:
                 print(name[i])
-        print("----------------------------")
+        print("- - - - - - - - - - - - - - -")
 
         for i in range(N):
             score =[]
             score.extend(scores[4*i:4*i+4])
-            for j in range(4):
-                if(j != 3):
-                    print(scores[4*i+j],end=", ")
-                else:
-                    print(scores[4*i+j])
+            
 
             res =[0,0,0,0]
             if (sum(score) != 100000):
@@ -56,6 +50,13 @@
                 else:
                     res[j] += (score[j] - 30000) /1000
             res[top_player] -= sum(res)
+
+            for j in range(4):
+                if(j != 3):
+                    print(res[j],end=", ")
+                else:
+                    print(res[j])
+
             for j in range(4):
                 ans[j] += res[j]
             ans = [round(i,1) for i in ans]
