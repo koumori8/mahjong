@@ -2,16 +2,17 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="./MJ.css" />
 <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
     <div class="form">
         <div class="upper">
-            <input id="names" type="text" placeholder="名前を入力" size="50">
+            <input id="names" type="text" placeholder="名前を入力">
         </div>
         <div class="lower">
-            <textarea id="scores" name="scores" cols="30" rows="10" placeholder="40000 30000 20000 10000"></textarea>
+            <textarea id="scores" name="scores" placeholder="40000 30000 20000 10000"></textarea><br class="mobile">
             <button py-click="clicked()" id="button">実行</button>
         </div>
         
