@@ -58,6 +58,7 @@
             res[top_player] -= sum(res)
             for j in range(4):
                 ans[j] += res[j]
+            ans = [round(i,1) for i in ans]
 
         print("----------------------------")
         for i in range(4):
