@@ -316,7 +316,38 @@ py-config {
     display: flex;
     align-items: flex-end;
   }
+  input{
+    width:25em;
+  }
+  textarea{
+    width: 12em;
+    height: 10em;
+  }
   p{
     padding: 0px;
+  }
+  .mobile{
+    display: none;
+  }
+  
+  @media screen and (max-width: 480px) {
+    html{
+      width: 100vw;
+    } 
+    button{
+      margin: 5px;
+    } 
+    input{
+    width: 95vw;
+    margin: 0px;
+    div.lower{
+      display: block;
+      align-items: baseline;
+    }
+    .mobile{
+      display: block;
+    }
+    }
+
   }
   /*# sourceMappingURL=pyscript.css.map */
