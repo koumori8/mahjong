@@ -312,6 +312,7 @@ py-config {
   }
   .lower{
     margin-top: 10px;
+    margin-bottom: 15px;
     display: flex;
     align-items: flex-end;
   }
