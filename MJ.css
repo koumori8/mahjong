@@ -115,6 +115,7 @@ py-config {
     border: solid;
     border-color: #f0625f;
     color: #9d041c;
+    display: none;
   }
   .py-warning {
     background-color: rgb(255, 244, 229);
@@ -283,7 +284,7 @@ py-config {
     text-decoration: line-through;
   }
   .py-terminal {
-    min-height: 20em;
+    min-height: 15em;
     background-color: black;
     color: white;
     padding: 0.5rem;
@@ -296,13 +297,25 @@ py-config {
     padding-bottom: 40vh;
   }
   py-terminal[docked] {
-    position: fixed;
     bottom: 0;
     width: 100vw;
-    max-height: 75vh;
+    max-height: 50vh;
     overflow: auto;
   }
   py-terminal[docked] .py-terminal {
     margin: 0;
+  }
+  button {
+    width: 8em;
+    height:2em;
+  }
+  .input{
+    display: flex;
+  }
+  .box1{
+    padding: 10px;
+  }
+  .box2{
+    padding: 10px;
   }
   /*# sourceMappingURL=pyscript.css.map */
