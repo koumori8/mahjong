@@ -6,13 +6,18 @@
 <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
-    <p><input id="names" type="text" placeholder="名前を入力" size="50" value="A B C D"></p>
-    <p><input id="games" type="number" placeholder="ゲームの回数" value="2"></p>
-    <p><textarea id="scores" name="scores" cols="30" rows="10" placeholder="40000 30000 20000 10000" value="40000 30000 20000 10000"></textarea></p>
-    <p>40000 30000 20000 10000<br>40000 30000 20000 10000</p>
-    <button py-click="clicked()" id="button">button</button>
-    <div id="show_name"></div>
-    <div id="show_result"></div>
+    <div class="input">
+        <div class="box1">
+            <p><input id="names" type="text" placeholder="名前を入力" size="50" value="A B C D"></p>
+            <p><input id="games" type="number" placeholder="ゲームの回数" value="2"></p>
+        </div>
+        <div class="box2">
+            <p><textarea id="scores" name="scores" cols="30" rows="10" placeholder="40000 30000 20000 10000"></textarea></p>
+            <button py-click="clicked()" id="button">実行</button>
+        </div>
+    </div>
+    
+
 <py-script>
     def clicked():
         names = Element("names").element.value
@@ -23,7 +28,7 @@
         scores = scores.split()
         scores = [int(n) for n in scores]
         ans = [0,0,0,0]
-        res_scores = []
+        error = []
 
         print("-------OVERALL RESULT-------")
         for i in range(4):
@@ -34,16 +39,17 @@
         print("----------------------------")
 
         for i in range(N):
-            score = scores[4*i:4*i+4]
+            score =[]
+            score.extend(scores[4*i:4*i+4])
             for j in range(4):
                 if(j != 3):
-                    print(scores[j],end=", ")
+                    print(scores[4*i+j],end=", ")
                 else:
-                    print(scores[j])
+                    print(scores[4*i+j])
 
             res =[0,0,0,0]
             if (sum(score) != 100000):
-                print("the sum of the game"+str(i+1)+" is not 100000")
+                error.append(i+1)
             for j in range(4):
                 if (score[j] == max(score)):
                     top_player = j
@@ -53,13 +59,18 @@
             for j in range(4):
                 ans[j] += res[j]
 
-        
         print("----------------------------")
         for i in range(4):
             if (i != 3):
                 print(ans[i],end=", ")
             else:
                 print(ans[i])
+        back = 8 + N
+        if (error == []):
+            print("Success!")
+        else:
+            print("ERROR: game"+str(error))
 </py-script>
+
 </body>
-</htm
+</html>
