@@ -9,7 +9,7 @@
 <body>
     <div class="form">
         <div class="upper">
-            <input id="names" type="text" placeholder="名前を入力">
+            <input id="names" type="text" placeholder="名前を入力 (空欄でも実行可)">
         </div>
         <div class="lower">
             <textarea id="scores" name="scores" placeholder="40000 30000 20000 10000"></textarea><br class="mobile">
@@ -21,7 +21,10 @@
 <py-script>
     def clicked():
         names = Element("names").element.value
-        name = names.split()
+        if (names == ""):
+            zero = True
+        if (not zero):
+            name = names.split()
         scores = Element("scores").element.value
         N = scores.count('\n') + 1
         scores = scores.split()
@@ -29,19 +32,19 @@
         ans = [0,0,0,0]
         error = []
 
-        print("-------OVERALL RESULT-------")
-        for i in range(4):
-            if (i != 3):
-                print(name[i],end=", ")
-            else:
-                print(name[i])
-        print("- - - - - - - - - - - - - - -")
+        if (not zero):
+            print("-------OVERALL RESULT-------")
+            for i in range(4):
+                if (i != 3):
+                    print(name[i],end=", ")
+                else:
+                    print(name[i])
+            print("- - - - - - - - - - - - - - -")
 
         for i in range(N):
             score =[]
             score.extend(scores[4*i:4*i+4])
             
-
             res =[0,0,0,0]
             if (sum(score) != 100000):
                 error.append(i+1)
